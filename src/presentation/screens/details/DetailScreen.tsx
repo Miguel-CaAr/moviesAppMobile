@@ -1,12 +1,11 @@
-import { useRoute } from '@react-navigation/native';
 import { StackScreenProps } from '@react-navigation/stack';
 import React from 'react';
-import { Text, View } from 'react-native';
 import { RootStackParams } from '../../navigation/Navigation';
 import { useMovie } from '../../hooks/useMovie';
 import { MovieHeader } from '../../components/movie/MovieHeader';
 import { MovieDetails } from '../../components/movie/MovieDetails';
 import { ScrollView } from 'react-native-gesture-handler';
+import { FullScreenLoader } from '../../components/loaders/FullScreenLoader';
 
 interface Props extends StackScreenProps<RootStackParams, 'Details'> { };
 
@@ -15,7 +14,7 @@ const DetailScreen = ({ route }: Props) => {
   const { isLoading, movie, cast = [], video = [] } = useMovie(movieId);
 
   if (isLoading) {
-    return <Text>Loading</Text>
+    return <FullScreenLoader />
   };
 
   return (
@@ -29,7 +28,7 @@ const DetailScreen = ({ route }: Props) => {
       />
 
       {/* Details */}
-      <MovieDetails movie={movie!} cast={cast} video={video} />
+      <MovieDetails movie={movie!} cast={cast} />
     </ScrollView>
   );
 };

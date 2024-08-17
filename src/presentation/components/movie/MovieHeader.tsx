@@ -1,10 +1,8 @@
 import { Image, Pressable, StyleSheet, Text, useWindowDimensions, View } from 'react-native'
-import { FullMovie } from '../../../core/entities/movie.entity';
 import { useNavigation } from '@react-navigation/native';
 import Icon from "react-native-vector-icons/Ionicons";
 import { Video } from '../../../core/entities/video.entity';
 import { Linking } from 'react-native';
-import { useRef } from 'react';
 
 interface Props {
   poster: string;
